@@ -1,404 +1,330 @@
-"<html>
+<html>
 <head>
-<link href=""https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"" rel=""stylesheet"">
-<style>
-body{font-family:Inter,Arial,sans-serif;background:#eef2f7;color:#0d1b2a;margin:0;padding:0;}
-*{box-sizing:border-box;}
-html,body{height:100%;overflow:hidden;}
-.content{margin-left:200px;padding:18px;height:calc(100vh - 90px);overflow:scroll;}
-.hdr{background:linear-gradient(90deg,#0a1f3c 0%,#0d2d4f 60%,#0f3460 100%);padding:14px 20px;border-bottom:3px solid #1e6bb8;display:flex;align-items:center;}
-.hdr-title{font-size:20px;font-weight:800;color:#ffffff;letter-spacing:-0.3px;display:inline;}
-.hdr-badges{margin-left:auto;}
-.badge{font-size:10px;font-weight:700;background:rgba(30,107,184,0.25);color:#7ec8ff;
-border:1px solid rgba(30,107,184,0.5);padding:5px 14px;border-radius:20px;margin-left:8px;letter-spacing:0.5px;}
-.classid-bar{background:#071d30;padding:6px 20px;font-size:11px;
-color:#5a8fbf;border-bottom:1px solid #1a3a5c;}
-.classid-bar span{font-family:""JetBrains Mono"",""Courier New"",monospace;color:#f0c040;
-font-weight:600;margin-left:8px;}
-.sidebar{width:200px;float:left;background:linear-gradient(180deg,#0a1f3c 0%,#0d2d4f 100%);min-height:800px;
-padding:16px 10px;border-right:2px solid #1a3a5c;}
-.nav-label{font-size:9px;font-weight:700;letter-spacing:2.5px;
-text-transform:uppercase;color:#2a5a7a;padding:8px 10px 6px 10px;}
-.btn{display:block;margin:3px 0;padding:11px 12px;background:transparent;
-color:#6a9ac4;text-decoration:none;cursor:pointer;border-left:3px solid
-transparent;border-radius:6px;font-size:12px;font-weight:600;
-transition:all 0.15s ease;}
-.btn:hover{background:rgba(30,107,184,0.12);color:#c8e4ff;border-left-color:#2a6aaa;}
-.btn.active-nav{background:rgba(30,107,184,0.2);color:#ffffff;border-left-color:#3a9ef5;
-box-shadow:inset 0 0 12px rgba(30,107,184,0.1);}
-.btn-icon{margin-right:8px;}
-.nav-divider{height:1px;background:rgba(30,107,184,0.2);margin:12px 6px;}
-.classid-chip{background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.2);
-border-radius:8px;padding:10px 12px;margin-top:14px;}
-.chip-label{font-size:8px;font-weight:700;letter-spacing:2px;
-text-transform:uppercase;color:rgba(240,192,64,0.4);display:block;margin-bottom:5px;}
-.chip-val{font-family:""JetBrains Mono"",""Courier New"",monospace;font-size:11px;font-weight:600;
-color:#f0c040;word-break:break-all;}
-.content{margin-left:200px;padding:18px;}
-.panel{display:none;}
-.active{display:block;}
-.card{background:#ffffff;border:1px solid #dce8f5;border-radius:10px;
-margin-bottom:16px;overflow:hidden;
-box-shadow:0 2px 8px rgba(13,45,79,0.08),0 1px 2px rgba(13,45,79,0.04);}
-.card-hdr{background:linear-gradient(90deg,#f0f6ff 0%,#f8fbff 100%);
-border-bottom:2px solid #dce8f5;padding:13px 18px;display:flex;align-items:center;gap:10px;}
-.card-hdr-title{font-size:12px;font-weight:700;letter-spacing:1px;
-text-transform:uppercase;color:#0d2d4f;}
-.card-hdr-bar{display:inline-block;width:3px;height:16px;
-background:linear-gradient(180deg,#1e6bb8,#3a9ef5);
-border-radius:2px;flex-shrink:0;}
-.card-body{padding:18px 18px 10px 18px;}
-.card-footer{background:#f4f8fd;border-top:1px solid #dce8f5;
-padding:12px 18px;text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:8px;}
-.sec{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-color:#1e6bb8;padding:10px 18px 6px 18px;border-bottom:1px solid #dce8f5;}
-.flabel{font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;letter-spacing:0.1px;}
-.req{color:#e02020;font-size:13px;}
-.hint{color:#8aacca;font-size:9px;font-weight:normal;
-font-family:""JetBrains Mono"",""Courier New"",monospace;margin-left:4px;}
-input,select{width:100%;height:34px;padding:0 10px;background:#ffffff;
-border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;
-font-family:Inter,Arial,sans-serif;color:#0d1b2a;font-weight:500;
-transition:border-color 0.15s,box-shadow 0.15s;}
-input:hover,select:hover{border-color:#a0b8d0;}
-input:focus,select:focus{border-color:#1e6bb8;outline:none;
-box-shadow:0 0 0 3px rgba(30,107,184,0.12);}
-input::placeholder{color:#a0b8cc;font-weight:400;}
-input.readonly-fld{background:#eef2f6;color:#6a8aaa;
-border-style:dashed;cursor:not-allowed;}
-input.classid-fld{background:#fffbea;border:1.5px dashed rgba(200,150,0,0.4);
-color:#7a5a00;font-family:""JetBrains Mono"",""Courier New"",monospace;font-size:11px;font-weight:600;}
-.ftable{width:100%;border-collapse:collapse;}
-.ftable td{padding:0 12px 12px 0;vertical-align:top;}
-.ftable td:last-child{padding-right:0;}
-.w25{width:25%;}
-.w33{width:33%;}
-.w50{width:50%;}
-.inp-wrap{position:relative;}
-.inp-wrap input{padding-right:32px;}
-.inp-icon{position:absolute;right:0;top:0;width:34px;height:34px;
-background:#e8f0fa;border:1.5px solid #c8d8ea;border-left:none;
-border-radius:0 6px 6px 0;cursor:pointer;font-size:13px;color:#3a6898;
-text-align:center;line-height:34px;transition:background 0.15s;}
-.inp-icon:hover{background:#d0e4f8;color:#0d2d4f;}
-.btn-blue{background:linear-gradient(135deg,#1e6bb8,#2478d4);color:#ffffff;border:none;border-radius:6px;
-padding:0 20px;font-size:11px;font-weight:700;letter-spacing:0.8px;
-text-transform:uppercase;cursor:pointer;font-family:Inter,Arial,sans-serif;height:34px;
-box-shadow:0 2px 8px rgba(30,107,184,0.35);transition:all 0.15s;}
-.btn-blue:hover{background:linear-gradient(135deg,#1a5fa0,#1e6bb8);
-box-shadow:0 4px 14px rgba(30,107,184,0.45);transform:translateY(-1px);}
-.btn-blue:active{transform:translateY(0);}
-.btn-outline{background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;
-border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;
-letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;
-font-family:Inter,Arial,sans-serif;height:34px;margin-right:0;transition:all 0.15s;}
-.btn-outline:hover{background:#e8f0f8;border-color:#1558a0;}
-.cf-table{width:100%;border-collapse:collapse;margin-top:4px;}
-.cf-table th{background:linear-gradient(90deg,#0a1f3c,#0d2d4f);color:#ffffff;font-size:11px;font-weight:700;
-padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;
-white-space:nowrap;letter-spacing:0.5px;}
-.cf-table td{background:#ffffff;color:#0d1b2a;font-size:12px;font-weight:500;
-padding:10px 12px;border-bottom:1px solid #e8f0fa;white-space:nowrap;
-transition:background 0.1s;}
-.cf-table tr:hover td{background:#eef6ff;cursor:pointer;}
-.cf-table .amt{text-align:right;font-family:""JetBrains Mono"",""Courier New"",monospace;font-weight:500;}
-.cf-badge{display:inline-block;padding:3px 10px;border-radius:10px;
-font-size:10px;font-weight:700;}
-.cf-badge-06{background:#ffe0e0;color:#c00000;border:1px solid rgba(192,0,0,0.2);}
-.cf-badge-05{background:#e0f5e8;color:#006030;border:1px solid rgba(0,96,48,0.2);}
-.cf-no-data{text-align:center;padding:40px;color:#8aacca;font-size:13px;
-font-style:italic;}
-.cf-calc-table{width:100%;border-collapse:collapse;margin-top:6px;}
-.cf-calc-table th{background:linear-gradient(90deg,#0a1f3c,#0d2d4f);color:#fff;font-size:11px;
-padding:10px 10px;text-align:left;border-bottom:2px solid #1e6bb8;letter-spacing:0.5px;}
-.cf-calc-table td{font-size:11px;padding:8px 10px;border-bottom:1px solid #e8f0fa;font-weight:500;}
-.cf-calc-table tr:nth-child(even) td{background:#f5f9ff;}
-.cf-calc-table tr:hover td{background:#eef6ff;}
-.cf-calc-table .amt{text-align:right;font-family:""JetBrains Mono"",""Courier New"",monospace;}
-.cf-calc-table .curr{text-align:center;font-weight:700;color:#0d2d4f;}
-.cf-layout{width:100%;overflow:hidden;}
-.cf-left{overflow-x:auto;}
-.cf-table{min-width:900px;}
-.cf-layout{display:flex;gap:16px;}
-.cf-left{flex:1;transition:all .3s;}
-.cf-right{width:45%;display:none;}
-.cf-right.active{display:block;}
-.cf-left.shrink{width:55%;flex:none;}
-.cf-close{margin:10px;}
-</style>
-</head>
-</head>
 <script>
+var cid = "";
 function switchTab(id){
-document.getElementById(""panel1"").className=""panel"";
-document.getElementById(""panel2"").className=""panel"";
-document.getElementById(""panel3"").className=""panel"";
-document.getElementById(id).className=""panel active"";
-var navs=document.getElementsByClassName(""nav-link"");
-for(var i=0;i<navs.length;i++){navs[i].className=""btn nav-link"";}
-document.getElementById(""nav-""+id).className=""btn nav-link active-nav"";
+  var panels=["panel1","panel2","panel3"];
+  for(var i=0;i<panels.length;i++){
+    var p=document.getElementById(panels[i]);
+    if(p) p.style.display=(panels[i]===id)?"block":"none";
+  }
+  var navs=document.getElementsByTagName("div");
+  for(var j=0;j<navs.length;j++){
+    if(navs[j].getAttribute("data-nav")){
+      var isActive=navs[j].getAttribute("data-nav")===id;
+      navs[j].style.background=isActive?"rgba(30,107,184,0.2)":"transparent";
+      navs[j].style.color=isActive?"#ffffff":"#6a9ac4";
+      navs[j].style.borderLeft=isActive?"3px solid #3a9ef5":"3px solid transparent";
+    }
+  }
 }
-function gv(id){var e=document.getElementById(id);return e?e.value:"""";}
+function gv(id){var e=document.getElementById(id);return e?e.value:"";}
 function collectBond(){
- return gv(""facevalue"")+""|""+
-        gv(""issuer"")+""|""+
-        gv(""couponrate"")+""|""+
-        gv(""issuetype"")+""|""+
-        gv(""couponfreq"")+""|""+
-        gv(""longname"")+""|""+
-        gv(""calcmethod"")+""|""+
-        gv(""isin"")+""|""+
-        gv(""nextduedate"")+""|""+
-        gv(""issuancedate"")+""|""+
-        gv(""maturitydate"")+""|""+
-        gv(""issuecurr"");
+  return gv("facevalue")+"|"+gv("issuer")+"|"+gv("couponrate")+"|"+gv("issuetype")+"|"+
+         gv("couponfreq")+"|"+gv("longname")+"|"+gv("calcmethod")+"|"+gv("isin")+"|"+
+         gv("nextduedate")+"|"+gv("issuancedate")+"|"+gv("maturitydate")+"|"+gv("issuecurr");
 }
 function collectTxn(){
- return gv(""classid_txn"")+""|""+
-        gv(""nounits"")+""|""+
-        gv(""issueprice"")+""|""+
-        gv(""issueplacement"");
+  return gv("classid_txn")+"|"+gv("nounits")+"|"+gv("issueprice")+"|"+gv("issueplacement");
 }
-function doCreateBond(){
- document.location=""sapevent:CREATE_BOND=""+encodeURIComponent(collectBond());
-}
-function doCreateIssuance(){
- document.location=""sapevent:CREATE_ISSUANCE=""+encodeURIComponent(collectTxn());
-}
-function doFees(){
- document.location=""sapevent:FEES=""+encodeURIComponent(collectTxn());
-}
-function genClassId(){
-var t=(new Date()).getTime().toString(36).toUpperCase();
-var r=Math.floor(Math.random()*65535).toString(16).toUpperCase();
-return ""CLS-""+t+""-""+r;
-}
+function doCreateBond(){ document.location="sapevent:CREATE_BOND="+encodeURIComponent(collectBond()); }
+function doCreateIssuance(){ document.location="sapevent:CREATE_ISSUANCE="+encodeURIComponent(collectTxn()); }
+function doFees(){ document.location="sapevent:FEES="+encodeURIComponent(collectTxn()); }
 function showCF(req){
-document.getElementById(""cf-left"").classList.add(""shrink"");
-document.getElementById(""cf-right"").classList.add(""active"");
-document.location=""sapevent:SHOW_CF=""+encodeURIComponent(req);
+  var cl=document.getElementById("cf-left");
+  var cr=document.getElementById("cf-right");
+  if(cl){ cl.style.flex="none"; cl.style.width="55%"; }
+  if(cr){ cr.style.display="block"; cr.style.width="44%"; }
+  document.location="sapevent:SHOW_CF="+encodeURIComponent(req);
 }
 function hideCF(){
-document.getElementById(""cf-left"").classList.remove(""shrink"");
-document.getElementById(""cf-right"").classList.remove(""active"");
-document.location=""sapevent:HIDE_CF"";
+  var cl=document.getElementById("cf-left");
+  var cr=document.getElementById("cf-right");
+  if(cl){ cl.style.flex="1"; cl.style.width="auto"; }
+  if(cr){ cr.style.display="none"; }
+  document.location="sapevent:HIDE_CF";
 }
 function init(){
-document.getElementById(""classid_txn"").value=cid;
-document.getElementById(""cid-strip"").innerHTML=cid;
-document.getElementById(""cid-chip"").innerHTML=cid;
+  var el=document.getElementById("classid_txn"); if(el) el.value=cid;
+  var cs=document.getElementById("cid-strip"); if(cs) cs.innerHTML=cid;
+  var cc=document.getElementById("cid-chip"); if(cc) cc.innerHTML=cid;
 }
 </script>
-<body onload=""init()"">
-<div class=""hdr"">
-<span class=""hdr-title"">&#9670; Bond Creation </span>
-<span class=""hdr-badges"">
-<span class=""badge"">NEW ENTRY</span>
-<span class=""badge"">TY_BLTR</span>
-</span>
-<div style=""clear:both""></div>
+</head>
+<body onload="init()" style="font-family:Arial,sans-serif;background:#eef2f7;color:#0d1b2a;margin:0;padding:0;">
+
+<!-- HEADER -->
+<div style="background:#0a1f3c;padding:14px 20px;border-bottom:3px solid #1e6bb8;display:table;width:100%;box-sizing:border-box;">
+  <span style="font-size:20px;font-weight:800;color:#ffffff;display:table-cell;vertical-align:middle;">&#9670; Bond Creation</span>
+  <span style="display:table-cell;text-align:right;vertical-align:middle;">
+    <span style="font-size:10px;font-weight:700;background:rgba(30,107,184,0.25);color:#7ec8ff;border:1px solid rgba(30,107,184,0.5);padding:5px 14px;border-radius:20px;margin-left:8px;">NEW ENTRY</span>
+    <span style="font-size:10px;font-weight:700;background:rgba(30,107,184,0.25);color:#7ec8ff;border:1px solid rgba(30,107,184,0.5);padding:5px 14px;border-radius:20px;margin-left:8px;">TY_BLTR</span>
+  </span>
 </div>
-<div class=""classid-bar"">CLASS ID: <span id=""cid-strip""></span></div>
-<div class=""sidebar"">
-<div class=""nav-label"">Navigation</div>
-<div class=""btn nav-link active-nav"" id=""nav-panel1"" onclick=""switchTab('panel1')""><span class=""btn-icon"">&#128196;</span> Bond Class</div>
-<div class=""btn nav-link"" id=""nav-panel2"" onclick=""switchTab('panel2')""><span class=""btn-icon"">&#128202;</span> Transaction</div>
-<div class=""btn nav-link"" id=""nav-panel3"" onclick=""switchTab('panel3')""><span class=""btn-icon"">&#128178;</span> Cash Flow</div>
-<div class=""nav-divider""></div>
-<div class=""classid-chip"">
-<span class=""chip-label"">Class ID</span>
-<span class=""chip-val"" id=""cid-chip""></span>
+
+<!-- CLASS ID BAR -->
+<div style="background:#071d30;padding:6px 20px;font-size:11px;color:#5a8fbf;border-bottom:1px solid #1a3a5c;">
+  CLASS ID: <span id="cid-strip" style="font-family:monospace;color:#f0c040;font-weight:600;margin-left:8px;"></span>
 </div>
-</div>
-<div class=""content"">
-<div id=""panel1"" class=""panel active"">
-<div class=""card"">
-<div class=""card-hdr""><span class=""card-hdr-bar""></span>
-<span class=""card-hdr-title"">Identification</span></div>
-<div class=""card-body"">
-<table class=""ftable"" cellpadding=""0"" cellspacing=""0"">
+
+<!-- LAYOUT TABLE -->
+<table style="width:100%;border-collapse:collapse;table-layout:fixed;" cellpadding="0" cellspacing="0">
 <tr>
-<td class=""w25""><span class=""flabel"">Issuer</span>
-<input id=""issuer"" type=""text"" placeholder=""Issuer name"" /></td>
-<td class=""w25""><span class=""flabel"">Issue Type</span>
-<select id=""issuetype""><option value=""""></option>
-<option value=""144A"">144A</option>
-<option value=""REGS"">Reg S</option>
-<option value=""CORP"">Corporate</option>
-<option value=""GOVT"">Government</option>
-</select></td>
-<td class=""w25""><span class=""flabel"">ISIN</span>
-<input id=""isin"" type=""text"" placeholder=""e.g. US0231351067"" /></td>
-<td class=""w25""></td>
+
+<!-- SIDEBAR -->
+<td style="width:200px;vertical-align:top;background:#0a1f3c;border-right:2px solid #1a3a5c;padding:16px 10px;" valign="top">
+  <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#2a5a7a;padding:8px 10px 6px 10px;">Navigation</div>
+
+  <div data-nav="panel1" onclick="switchTab('panel1')" style="display:block;margin:3px 0;padding:11px 12px;background:rgba(30,107,184,0.2);color:#ffffff;border-left:3px solid #3a9ef5;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">
+    &#128196; Bond Class
+  </div>
+  <div data-nav="panel2" onclick="switchTab('panel2')" style="display:block;margin:3px 0;padding:11px 12px;background:transparent;color:#6a9ac4;border-left:3px solid transparent;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">
+    &#128202; Transaction
+  </div>
+  <div data-nav="panel3" onclick="switchTab('panel3')" style="display:block;margin:3px 0;padding:11px 12px;background:transparent;color:#6a9ac4;border-left:3px solid transparent;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">
+    &#128178; Cash Flow
+  </div>
+
+  <div style="height:1px;background:rgba(30,107,184,0.2);margin:12px 6px;"></div>
+
+  <div style="background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.2);border-radius:8px;padding:10px 12px;margin-top:14px;">
+    <span style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,192,64,0.4);display:block;margin-bottom:5px;">Class ID</span>
+    <span id="cid-chip" style="font-family:monospace;font-size:11px;font-weight:600;color:#f0c040;word-break:break-all;"></span>
+  </div>
+</td>
+
+<!-- CONTENT -->
+<td style="vertical-align:top;padding:18px;" valign="top">
+
+  <!-- PANEL 1: BOND CLASS -->
+  <div id="panel1" style="display:block;">
+
+    <!-- Identification Card -->
+    <div style="background:#ffffff;border:1px solid #dce8f5;border-radius:10px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(13,45,79,0.08);">
+      <div style="background:#f0f6ff;border-bottom:2px solid #dce8f5;padding:13px 18px;display:table;width:100%;box-sizing:border-box;">
+        <span style="display:inline-block;width:3px;height:16px;background:#1e6bb8;border-radius:2px;vertical-align:middle;margin-right:10px;"></span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0d2d4f;vertical-align:middle;">Identification</span>
+      </div>
+      <div style="padding:18px 18px 10px 18px;">
+        <table style="width:100%;border-collapse:collapse;" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Issuer</span>
+              <input id="issuer" type="text" placeholder="Issuer name" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Issue Type</span>
+              <select id="issuetype" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;">
+                <option value=""></option>
+                <option value="144A">144A</option>
+                <option value="REGS">Reg S</option>
+                <option value="CORP">Corporate</option>
+                <option value="GOVT">Government</option>
+              </select>
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">ISIN</span>
+              <input id="isin" type="text" placeholder="e.g. US0231351067" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 0 12px 0;vertical-align:top;"></td>
+          </tr>
+          <tr>
+            <td style="width:50%;padding:0 12px 12px 0;vertical-align:top;" colspan="2">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Long Name</span>
+              <input id="longname" type="text" placeholder="Full bond description" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Issuance Date</span>
+              <input id="issuancedate" type="text" placeholder="YYYY-MM-DD" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 0 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Maturity Date</span>
+              <input id="maturitydate" type="text" placeholder="YYYY-MM-DD" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Coupon Card -->
+    <div style="background:#ffffff;border:1px solid #dce8f5;border-radius:10px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(13,45,79,0.08);">
+      <div style="background:#f0f6ff;border-bottom:2px solid #dce8f5;padding:13px 18px;">
+        <span style="display:inline-block;width:3px;height:16px;background:#1e6bb8;border-radius:2px;vertical-align:middle;margin-right:10px;"></span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0d2d4f;vertical-align:middle;">Coupon &amp; Financial Terms</span>
+      </div>
+      <div style="padding:18px 18px 10px 18px;">
+        <table style="width:100%;border-collapse:collapse;" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Face Value</span>
+              <input id="facevalue" type="text" placeholder="0.00" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Issue Currency</span>
+              <select id="issuecurr" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;">
+                <option value=""></option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="INR">INR</option>
+                <option value="GBP">GBP</option>
+              </select>
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Coupon Rate (%)</span>
+              <input id="couponrate" type="text" placeholder="0.000" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 0 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Coupon Frequency</span>
+              <select id="couponfreq" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;">
+                <option value=""></option>
+                <option value="M">Monthly</option>
+                <option value="Q">Quarterly</option>
+                <option value="SA">Semi-Annual</option>
+                <option value="A">Annual</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Int Calc Method</span>
+              <select id="calcmethod" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;">
+                <option value=""></option>
+                <option value="ACT360">ACT/360</option>
+                <option value="ACT365">ACT/365</option>
+                <option value="30360">30/360</option>
+              </select>
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Next Due Date</span>
+              <input id="nextduedate" type="text" placeholder="YYYY-MM-DD" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:25%;padding:0 12px 12px 0;vertical-align:top;"></td>
+            <td style="width:25%;padding:0 0 12px 0;vertical-align:top;"></td>
+          </tr>
+        </table>
+      </div>
+      <div style="background:#f4f8fd;border-top:1px solid #dce8f5;padding:12px 18px;text-align:right;">
+        <button onclick="switchTab('panel2')" style="background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;height:34px;margin-right:8px;">Transaction &rarr;</button>
+        <button onclick="doCreateBond()" style="background:#1e6bb8;color:#ffffff;border:none;border-radius:6px;padding:0 20px;font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;height:34px;">&#9654; Create Bond</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: TRANSACTION -->
+  <div id="panel2" style="display:none;">
+    <div style="background:#ffffff;border:1px solid #dce8f5;border-radius:10px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(13,45,79,0.08);">
+      <div style="background:#f0f6ff;border-bottom:2px solid #dce8f5;padding:13px 18px;">
+        <span style="display:inline-block;width:3px;height:16px;background:#1e6bb8;border-radius:2px;vertical-align:middle;margin-right:10px;"></span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0d2d4f;vertical-align:middle;">Bond Transaction Details</span>
+      </div>
+      <div style="padding:18px 18px 10px 18px;">
+        <table style="width:100%;border-collapse:collapse;" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="width:33%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Class ID <span style="color:#8aacca;font-size:9px;font-family:monospace;">(auto)</span></span>
+              <input id="classid_txn" type="text" style="width:100%;height:34px;padding:0 10px;background:#fffbea;border:1.5px dashed rgba(200,150,0,0.4);border-radius:6px;font-size:11px;font-family:monospace;color:#7a5a00;font-weight:600;box-sizing:border-box;" />
+            </td>
+            <td style="width:33%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">No. of Units</span>
+              <input id="nounits" type="text" placeholder="0" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:33%;padding:0 0 12px 0;vertical-align:top;"></td>
+          </tr>
+          <tr>
+            <td style="width:33%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Issue Price</span>
+              <input id="issueprice" type="text" placeholder="0.00" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:33%;padding:0 12px 12px 0;vertical-align:top;">
+              <span style="font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;">Issue Placement</span>
+              <input id="issueplacement" type="text" value="0.00" style="width:100%;height:34px;padding:0 10px;background:#ffffff;border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;color:#0d1b2a;box-sizing:border-box;" />
+            </td>
+            <td style="width:33%;padding:0 0 12px 0;vertical-align:top;"></td>
+          </tr>
+        </table>
+      </div>
+      <div style="background:#f4f8fd;border-top:1px solid #dce8f5;padding:12px 18px;text-align:right;">
+        <button onclick="switchTab('panel1')" style="background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;height:34px;margin-right:8px;">&larr; Bond Class</button>
+        <button onclick="doFees()" style="background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;height:34px;margin-right:8px;">&#9670; Fees</button>
+        <button onclick="doCreateIssuance()" style="background:#1e6bb8;color:#ffffff;border:none;border-radius:6px;padding:0 20px;font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;height:34px;">&#9654; Create Issuance</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: CASH FLOW -->
+  <div id="panel3" style="display:none;">
+    <div style="background:#ffffff;border:1px solid #dce8f5;border-radius:10px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(13,45,79,0.08);">
+      <div style="background:#f0f6ff;border-bottom:2px solid #dce8f5;padding:13px 18px;">
+        <span style="display:inline-block;width:3px;height:16px;background:#1e6bb8;border-radius:2px;vertical-align:middle;margin-right:10px;"></span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0d2d4f;vertical-align:middle;">Cash Flow Transactions</span>
+      </div>
+      <div style="padding:18px 18px 10px 18px;">
+        <table style="width:100%;border-collapse:collapse;" cellpadding="0" cellspacing="0">
+        <tr>
+          <!-- CF LEFT -->
+          <td id="cf-left" style="vertical-align:top;flex:1;" valign="top">
+            <div style="overflow-x:auto;">
+              <table style="width:100%;border-collapse:collapse;min-width:700px;" cellpadding="0" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th style="background:#0a1f3c;color:#ffffff;font-size:11px;font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;white-space:nowrap;">Transaction</th>
+                    <th style="background:#0a1f3c;color:#ffffff;font-size:11px;font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;white-space:nowrap;">Start Date</th>
+                    <th style="background:#0a1f3c;color:#ffffff;font-size:11px;font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;white-space:nowrap;">End Date</th>
+                    <th style="background:#0a1f3c;color:#ffffff;font-size:11px;font-weight:700;padding:11px 12px;text-align:right;border-bottom:2px solid #1e6bb8;white-space:nowrap;">BG Amount</th>
+                    <th style="background:#0a1f3c;color:#ffffff;font-size:11px;font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;white-space:nowrap;">BG Curr</th>
+                    <th style="background:#0a1f3c;color:#ffffff;font-size:11px;font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;white-space:nowrap;">Beneficiary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr onclick="showCF('0000000250232|0000000150217')" style="cursor:pointer;"><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250232</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240110</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270110</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0006000035</td></tr>
+                  <tr onclick="showCF('0000000250233|0000000150218')" style="cursor:pointer;"><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250233</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240110</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270110</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0006000035</td></tr>
+                  <tr onclick="showCF('0000000250234|0000000150219')" style="cursor:pointer;"><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250234</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240110</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270110</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0006000035</td></tr>
+                  <tr onclick="showCF('0000000250235|0000000150221')" style="cursor:pointer;"><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250235</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240110</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270110</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0006000035</td></tr>
+                  <tr onclick="showCF('0000000250251|0000000150244')" style="cursor:pointer;"><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250251</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240113</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270914</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">TFSIN</td></tr>
+                  <tr onclick="showCF('0000000250252|0000000150245')" style="cursor:pointer;"><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250252</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240113</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270914</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">TFSIN</td></tr>
+                  <tr onclick="showCF('0000000250255|0000000150248')" style="cursor:pointer;"><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250255</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240113</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270113</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">100.00</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">TFSIN</td></tr>
+                  <tr onclick="showCF('0000000250256|0000000150249')" style="cursor:pointer;"><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250256</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240113</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270113</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#f5f9ff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">TFSIN</td></tr>
+                  <tr onclick="showCF('0000000250291|0000000150280')" style="cursor:pointer;"><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">0000000250291</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20240113</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">20270113</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;text-align:right;font-family:monospace;">1,000,000.00</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">USD</td><td style="background:#fff;color:#0d1b2a;font-size:12px;padding:10px 12px;border-bottom:1px solid #e8f0fa;">TFSIN</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+
+          <!-- CF RIGHT (cashflow detail) -->
+          <td id="cf-right" style="display:none;width:44%;vertical-align:top;padding-left:16px;" valign="top">
+            <div style="background:#ffffff;border:1px solid #dce8f5;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(13,45,79,0.08);">
+              <div style="background:#f0f6ff;border-bottom:2px solid #dce8f5;padding:13px 18px;">
+                <span style="display:inline-block;width:3px;height:16px;background:#1e6bb8;border-radius:2px;vertical-align:middle;margin-right:10px;"></span>
+                <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0d2d4f;vertical-align:middle;">Calculated Cashflow</span>
+              </div>
+              <div id="cf-data" style="padding:18px 18px 10px 18px;">
+                <table style="width:100%;border-collapse:collapse;" cellpadding="0" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th style="background:#0a1f3c;color:#fff;font-size:11px;padding:10px;text-align:left;border-bottom:2px solid #1e6bb8;">Due Date</th>
+                      <th style="background:#0a1f3c;color:#fff;font-size:11px;padding:10px;text-align:left;border-bottom:2px solid #1e6bb8;">Description</th>
+                      <th style="background:#0a1f3c;color:#fff;font-size:11px;padding:10px;text-align:right;border-bottom:2px solid #1e6bb8;">Amount</th>
+                      <th style="background:#0a1f3c;color:#fff;font-size:11px;padding:10px;text-align:left;border-bottom:2px solid #1e6bb8;">Curr</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div style="background:#f4f8fd;border-top:1px solid #dce8f5;padding:12px 18px;text-align:right;">
+                <button onclick="hideCF()" style="background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer;height:34px;">Cancel Cashflow</button>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</td>
 </tr>
-<tr>
-<td class=""w50"" colspan=""2""><span class=""flabel"">Long Name</span>
-<input id=""longname"" type=""text"" placeholder=""Full bond description"" /></td>
-<td class=""w25""><span class=""flabel"">Issuance Date</span>
-<input id=""issuancedate"" type=""text"" placeholder=""YYYY-MM-DD"" /></td>
-<td class=""w25""><span class=""flabel"">Maturity Date</span>
-<input id=""maturitydate"" type=""text"" placeholder=""YYYY-MM-DD"" /></td>
-</tr>
-</table></div></div>
-<div class=""card"">
-<div class=""card-hdr""><span class=""card-hdr-bar""></span>
-<span class=""card-hdr-title"">Coupon &amp; Financial Terms</span></div>
-<div class=""card-body"">
-<table class=""ftable"" cellpadding=""0"" cellspacing=""0"">
-<tr>
-<td class=""w25""><span class=""flabel"">Face Value</span>
-<input id=""facevalue"" type=""text"" placeholder=""0.00"" /></td>
-<td class=""w25""><span class=""flabel"">Issue Currency</span>
-<select id=""issuecurr""><option value=""""></option>
-<option value=""USD"">USD</option><option value=""EUR"">EUR</option>
-<option value=""INR"">INR</option><option value=""GBP"">GBP</option>
-</select></td>
-<td class=""w25""><span class=""flabel"">Coupon Rate (%)</span>
-<input id=""couponrate"" type=""text"" placeholder=""0.000"" /></td>
-<td class=""w25""><span class=""flabel"">Coupon Frequency</span>
-<select id=""couponfreq""><option value=""""></option>
-<option value=""M"">Monthly</option><option value=""Q"">Quarterly</option>
-<option value=""SA"">Semi-Annual</option><option value=""A"">Annual</option>
-</select></td>
-</tr>
-<tr>
-<td class=""w25""><span class=""flabel"">Int Calc Method</span>
-<select id=""calcmethod""><option value=""""></option>
-<option value=""ACT360"">ACT/360</option>
-<option value=""ACT365"">ACT/365</option>
-<option value=""30360"">30/360</option>
-</select></td>
-<td class=""w25""><span class=""flabel"">Next Due Date</span>
-<input id=""nextduedate"" type=""text"" placeholder=""YYYY-MM-DD"" /></td>
-<td class=""w25""></td><td class=""w25""></td>
-</tr>
-</table></div>
-<div class=""card-footer"">
-<button class=""btn-outline"" onclick=""switchTab('panel2')"">Transaction &rarr;</button>
-<button class=""btn-blue"" onclick=""doCreateBond()"">&#9654; Create Bond</button>
-</div></div>
-</div>
-<div id=""panel2"" class=""panel"">
-<div class=""card"">
-<div class=""card-hdr""><span class=""card-hdr-bar""></span>
-<span class=""card-hdr-title"">Bond Transaction Details</span></div>
-<div class=""card-body"">
-<table class=""ftable"" cellpadding=""0"" cellspacing=""0"">
-<tr>
-<td class=""w25""><span class=""flabel"">Class ID <span class=""hint"">auto</span></span>
-<div class=""inp-wrap""><input id=""classid_txn"" class=""classid-fld ""  />
-<span class=""inp-icon"">&#128269;</span></div></td>
-<td class=""w33""><span class=""flabel"">No. of Units</span>
-<input id=""nounits"" type=""text"" placeholder=""0"" /></td>
-<td class=""w33""></td>
-</tr>
-<tr>
-<td class=""w33""><span class=""flabel"">Issue Price</span>
-<input id=""issueprice"" type=""text"" placeholder=""0.00"" /></td>
-<td class=""w33""><span class=""flabel"">Issue Placement</span>
-<input id=""issueplacement"" type=""text"" value=""0.00"" /></td>
-<td class=""w33""></td>
-</tr>
-</table></div>
-<div class=""card-footer"">
-<button class=""btn-outline"" onclick=""switchTab('panel1')"">&larr; Bond Class</button>
-<button class=""btn-outline"" onclick=""doFees()"">&#9670; Fees</button>
-<button class=""btn-blue"" onclick=""doCreateIssuance()"">&#9654; Create Issuance</button>
-</div></div>
-</div>
-<div id=""panel3"" class=""panel"">
-<div class=""card"">
-<div class=""card-hdr""><span class=""card-hdr-bar""></span>
-<span class=""card-hdr-title"">Cash Flow Transactions</span></div>
-<div class=""card-body"">
-<div class=""cf-layout"">
-<div class=""cf-left"" id=""cf-left"">
-<div style=""overflow-x:auto;width:100%;"">
-<table class=""cf-table"">
-<div style=""overflow-x:auto;"">
-<table class=""cf-table"">
-<thead><tr>
-<th>Transaction</th>
-<th>Start Date</th>
-<th>End Date</th>
-<th style=""text-align:right;"">BG Amount</th>
-<th>BG Curr</th>
-<th>Beneficiary</th>
-</tr></thead>
-<tbody>
-<tr onclick=""showCF('0000000250232|0000000150217')""><td>0000000250232</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250233|0000000150218')""><td>0000000250233</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250234|0000000150219')""><td>0000000250234</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250235|0000000150221')""><td>0000000250235</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250236|0000000150222')""><td>0000000250236</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250237|0000000150223')""><td>0000000250237</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250238|0000000150224')""><td>0000000250238</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250239|0000000150225')""><td>0000000250239</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250240|0000000150226')""><td>0000000250240</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250241|0000000150227')""><td>0000000250241</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250242|0000000150228')""><td>0000000250242</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250243|0000000150229')""><td>0000000250243</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250244|0000000150230')""><td>0000000250244</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250245|0000000150231')""><td>0000000250245</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250246|0000000150232')""><td>0000000250246</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250247|0000000150233')""><td>0000000250247</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250248|0000000150234')""><td>0000000250248</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250249|0000000150235')""><td>0000000250249</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
-<tr onclick=""showCF('0000000250251|0000000150244')""><td>0000000250251</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250252|0000000150245')""><td>0000000250252</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250255|0000000150248')""><td>0000000250255</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250256|0000000150249')""><td>0000000250256</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250257|0000000150250')""><td>0000000250257</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250258|0000000150251')""><td>0000000250258</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250259|0000000150252')""><td>0000000250259</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250260|0000000150253')""><td>0000000250260</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250261|0000000150254')""><td>0000000250261</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250262|0000000150255')""><td>0000000250262</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250263|0000000150256')""><td>0000000250263</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250264|0000000150257')""><td>0000000250264</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250265|0000000150258')""><td>0000000250265</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250266|0000000150259')""><td>0000000250266</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250268|0000000150260')""><td>0000000250268</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250267|0000000150260')""><td>0000000250267</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250271|0000000150265')""><td>0000000250271</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250273|0000000150267')""><td>0000000250273</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250274|0000000150268')""><td>0000000250274</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250275|0000000150269')""><td>0000000250275</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250276|0000000150270')""><td>0000000250276</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250277|0000000150271')""><td>0000000250277</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250278|0000000150272')""><td>0000000250278</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250279|0000000150273')""><td>0000000250279</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250280|0000000150274')""><td>0000000250280</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250281|0000000150275')""><td>0000000250281</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-<tr onclick=""showCF('0000000250291|0000000150280')""><td>0000000250291</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
-</tbody></table></div></div>
-<div class=""cf-right"" id=""cf-right"">
-<div class=""card"">
-<div class=""card-hdr""><span class=""card-hdr-bar""></span>
-<span class=""card-hdr-title"">Calculated Cashflow</span></div>
-<div class=""card-body"" id=""cf-data"">
-<table class=""cf-calc-table"">
-<thead><tr>
-<th>Due Date</th>
-<th>Description</th>
-<th>Units</th>
-<th class=""amt"">Amount</th>
-<th>Curr</th>
-<th>No Days</th>
-<th>Coupon</th>
-<th class=""amt"">Base Amt</th>
-</tr></thead>
-<tbody>
-</tbody></table>
-</div>
-<div class=""card-footer"">
-<button class=""btn-outline"" onclick=""hideCF()"">Cancel Cashflow</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+</table>
+
 </body>
-</html>"
+</html>
