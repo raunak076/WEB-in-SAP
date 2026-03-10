@@ -1,610 +1,404 @@
-
-  APPEND '<html>'                                                                              TO ct_html.
-  APPEND '<head>'                                                                              TO ct_html.
-  APPEND '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">' TO ct_html.
-  APPEND '<style>'                                                                             TO ct_html.
-
-  " ── BASE ──
-  APPEND 'body{font-family:Inter,Arial,sans-serif;background:#eef2f7;color:#0d1b2a;margin:0;padding:0;}' TO ct_html.
-  APPEND '*{box-sizing:border-box;}'                                                           TO ct_html.
-
-  APPEND 'html,body{height:100%;overflow:hidden;}' TO ct_html.
-  APPEND '.content{margin-left:200px;padding:18px;height:calc(100vh - 90px);overflow:scroll;}' TO ct_html.
-
-  " ── HEADER ──
-  APPEND '.hdr{background:linear-gradient(90deg,#0a1f3c 0%,#0d2d4f 60%,#0f3460 100%);padding:14px 20px;border-bottom:3px solid #1e6bb8;display:flex;align-items:center;}' TO ct_html.
-  APPEND '.hdr-title{font-size:20px;font-weight:800;color:#ffffff;letter-spacing:-0.3px;display:inline;}' TO ct_html.
-  APPEND '.hdr-badges{margin-left:auto;}' TO ct_html.
-  APPEND '.badge{font-size:10px;font-weight:700;background:rgba(30,107,184,0.25);color:#7ec8ff;'  TO ct_html.
-  APPEND 'border:1px solid rgba(30,107,184,0.5);padding:5px 14px;border-radius:20px;margin-left:8px;letter-spacing:0.5px;}' TO ct_html.
-  APPEND '.classid-bar{background:#071d30;padding:6px 20px;font-size:11px;'                   TO ct_html.
-  APPEND 'color:#5a8fbf;border-bottom:1px solid #1a3a5c;}'                                    TO ct_html.
-  APPEND '.classid-bar span{font-family:"JetBrains Mono","Courier New",monospace;color:#f0c040;' TO ct_html.
-  APPEND 'font-weight:600;margin-left:8px;}'                                                  TO ct_html.
-
-  " ── SIDEBAR ──
-  APPEND '.sidebar{width:200px;float:left;background:linear-gradient(180deg,#0a1f3c 0%,#0d2d4f 100%);min-height:800px;' TO ct_html.
-  APPEND 'padding:16px 10px;border-right:2px solid #1a3a5c;}'                                 TO ct_html.
-  APPEND '.nav-label{font-size:9px;font-weight:700;letter-spacing:2.5px;'                     TO ct_html.
-  APPEND 'text-transform:uppercase;color:#2a5a7a;padding:8px 10px 6px 10px;}'                 TO ct_html.
-  APPEND '.btn{display:block;margin:3px 0;padding:11px 12px;background:transparent;'          TO ct_html.
-  APPEND 'color:#6a9ac4;text-decoration:none;cursor:pointer;border-left:3px solid '           TO ct_html.
-  APPEND 'transparent;border-radius:6px;font-size:12px;font-weight:600;'                      TO ct_html.
-  APPEND 'transition:all 0.15s ease;}'                                                        TO ct_html.
-  APPEND '.btn:hover{background:rgba(30,107,184,0.12);color:#c8e4ff;border-left-color:#2a6aaa;}' TO ct_html.
-  APPEND '.btn.active-nav{background:rgba(30,107,184,0.2);color:#ffffff;border-left-color:#3a9ef5;' TO ct_html.
-  APPEND 'box-shadow:inset 0 0 12px rgba(30,107,184,0.1);}'                                   TO ct_html.
-  APPEND '.btn-icon{margin-right:8px;}'                                                       TO ct_html.
-  APPEND '.nav-divider{height:1px;background:rgba(30,107,184,0.2);margin:12px 6px;}'          TO ct_html.
-  APPEND '.classid-chip{background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.2);' TO ct_html.
-  APPEND 'border-radius:8px;padding:10px 12px;margin-top:14px;}'                              TO ct_html.
-  APPEND '.chip-label{font-size:8px;font-weight:700;letter-spacing:2px;'                      TO ct_html.
-  APPEND 'text-transform:uppercase;color:rgba(240,192,64,0.4);display:block;margin-bottom:5px;}' TO ct_html.
-  APPEND '.chip-val{font-family:"JetBrains Mono","Courier New",monospace;font-size:11px;font-weight:600;' TO ct_html.
-  APPEND 'color:#f0c040;word-break:break-all;}'                                               TO ct_html.
-
-  " ── CONTENT ──
-  APPEND '.content{margin-left:200px;padding:18px;}'                                          TO ct_html.
-
-  " ── PANELS ──
-  APPEND '.panel{display:none;}'                                                               TO ct_html.
-  APPEND '.active{display:block;}'                                                             TO ct_html.
-
-  " ── SECTION CARD ──
-  APPEND '.card{background:#ffffff;border:1px solid #dce8f5;border-radius:10px;'              TO ct_html.
-  APPEND 'margin-bottom:16px;overflow:hidden;'                                                TO ct_html.
-  APPEND 'box-shadow:0 2px 8px rgba(13,45,79,0.08),0 1px 2px rgba(13,45,79,0.04);}'          TO ct_html.
-  APPEND '.card-hdr{background:linear-gradient(90deg,#f0f6ff 0%,#f8fbff 100%);'              TO ct_html.
-  APPEND 'border-bottom:2px solid #dce8f5;padding:13px 18px;display:flex;align-items:center;gap:10px;}' TO ct_html.
-  APPEND '.card-hdr-title{font-size:12px;font-weight:700;letter-spacing:1px;'                 TO ct_html.
-  APPEND 'text-transform:uppercase;color:#0d2d4f;}'                                           TO ct_html.
-  APPEND '.card-hdr-bar{display:inline-block;width:3px;height:16px;'                          TO ct_html.
-  APPEND 'background:linear-gradient(180deg,#1e6bb8,#3a9ef5);'                               TO ct_html.
-  APPEND 'border-radius:2px;flex-shrink:0;}'                                                  TO ct_html.
-  APPEND '.card-body{padding:18px 18px 10px 18px;}'                                           TO ct_html.
-  APPEND '.card-footer{background:#f4f8fd;border-top:1px solid #dce8f5;'                      TO ct_html.
-  APPEND 'padding:12px 18px;text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:8px;}' TO ct_html.
-
-  " ── SECTION LABEL ──
-  APPEND '.sec{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;'    TO ct_html.
-  APPEND 'color:#1e6bb8;padding:10px 18px 6px 18px;border-bottom:1px solid #dce8f5;}'        TO ct_html.
-
-  " ── FIELD LABEL ──
-  APPEND '.flabel{font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;letter-spacing:0.1px;}' TO ct_html.
-  APPEND '.req{color:#e02020;font-size:13px;}'                                                 TO ct_html.
-  APPEND '.hint{color:#8aacca;font-size:9px;font-weight:normal;'                              TO ct_html.
-  APPEND 'font-family:"JetBrains Mono","Courier New",monospace;margin-left:4px;}'             TO ct_html.
-
-  " ── INPUTS ──
-  APPEND 'input,select{width:100%;height:34px;padding:0 10px;background:#ffffff;'             TO ct_html.
-  APPEND 'border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;'                      TO ct_html.
-  APPEND 'font-family:Inter,Arial,sans-serif;color:#0d1b2a;font-weight:500;'                 TO ct_html.
-  APPEND 'transition:border-color 0.15s,box-shadow 0.15s;}'                                  TO ct_html.
-  APPEND 'input:hover,select:hover{border-color:#a0b8d0;}'                                   TO ct_html.
-  APPEND 'input:focus,select:focus{border-color:#1e6bb8;outline:none;'                        TO ct_html.
-  APPEND 'box-shadow:0 0 0 3px rgba(30,107,184,0.12);}'                                      TO ct_html.
-  APPEND 'input::placeholder{color:#a0b8cc;font-weight:400;}'                                 TO ct_html.
-  APPEND 'input.readonly-fld{background:#eef2f6;color:#6a8aaa;'                               TO ct_html.
-  APPEND 'border-style:dashed;cursor:not-allowed;}'                                           TO ct_html.
-  APPEND 'input.classid-fld{background:#fffbea;border:1.5px dashed rgba(200,150,0,0.4);'     TO ct_html.
-  APPEND 'color:#7a5a00;font-family:"JetBrains Mono","Courier New",monospace;font-size:11px;font-weight:600;}' TO ct_html.
-
-  " ── FIELD TABLE ──
-  APPEND '.ftable{width:100%;border-collapse:collapse;}'                                       TO ct_html.
-  APPEND '.ftable td{padding:0 12px 12px 0;vertical-align:top;}'                              TO ct_html.
-  APPEND '.ftable td:last-child{padding-right:0;}'                                            TO ct_html.
-  APPEND '.w25{width:25%;}'                                                                    TO ct_html.
-  APPEND '.w33{width:33%;}'                                                                    TO ct_html.
-  APPEND '.w50{width:50%;}'                                                                    TO ct_html.
-
-  " ── INPUT WITH ICON ──
-  APPEND '.inp-wrap{position:relative;}'                                                       TO ct_html.
-  APPEND '.inp-wrap input{padding-right:32px;}'                                                TO ct_html.
-  APPEND '.inp-icon{position:absolute;right:0;top:0;width:34px;height:34px;'                  TO ct_html.
-  APPEND 'background:#e8f0fa;border:1.5px solid #c8d8ea;border-left:none;'                   TO ct_html.
-  APPEND 'border-radius:0 6px 6px 0;cursor:pointer;font-size:13px;color:#3a6898;'             TO ct_html.
-  APPEND 'text-align:center;line-height:34px;transition:background 0.15s;}'                  TO ct_html.
-  APPEND '.inp-icon:hover{background:#d0e4f8;color:#0d2d4f;}'                                 TO ct_html.
-
-  " ── BUTTONS ──
-  APPEND '.btn-blue{background:linear-gradient(135deg,#1e6bb8,#2478d4);color:#ffffff;border:none;border-radius:6px;' TO ct_html.
-  APPEND 'padding:0 20px;font-size:11px;font-weight:700;letter-spacing:0.8px;'               TO ct_html.
-  APPEND 'text-transform:uppercase;cursor:pointer;font-family:Inter,Arial,sans-serif;height:34px;' TO ct_html.
-  APPEND 'box-shadow:0 2px 8px rgba(30,107,184,0.35);transition:all 0.15s;}'                 TO ct_html.
-  APPEND '.btn-blue:hover{background:linear-gradient(135deg,#1a5fa0,#1e6bb8);'               TO ct_html.
-  APPEND 'box-shadow:0 4px 14px rgba(30,107,184,0.45);transform:translateY(-1px);}'          TO ct_html.
-  APPEND '.btn-blue:active{transform:translateY(0);}'                                         TO ct_html.
-  APPEND '.btn-outline{background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;'          TO ct_html.
-  APPEND 'border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;'                  TO ct_html.
-  APPEND 'letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;'                     TO ct_html.
-  APPEND 'font-family:Inter,Arial,sans-serif;height:34px;margin-right:0;transition:all 0.15s;}' TO ct_html.
-  APPEND '.btn-outline:hover{background:#e8f0f8;border-color:#1558a0;}'                       TO ct_html.
-
-  " ── CASHFLOW TABLE ──
-  APPEND '.cf-table{width:100%;border-collapse:collapse;margin-top:4px;}'                     TO ct_html.
-  APPEND '.cf-table th{background:linear-gradient(90deg,#0a1f3c,#0d2d4f);color:#ffffff;font-size:11px;font-weight:700;' TO ct_html.
-  APPEND 'padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;'                TO ct_html.
-  APPEND 'white-space:nowrap;letter-spacing:0.5px;}'                                          TO ct_html.
-  APPEND '.cf-table td{background:#ffffff;color:#0d1b2a;font-size:12px;font-weight:500;'      TO ct_html.
-  APPEND 'padding:10px 12px;border-bottom:1px solid #e8f0fa;white-space:nowrap;'             TO ct_html.
-  APPEND 'transition:background 0.1s;}'                                                       TO ct_html.
-  APPEND '.cf-table tr:hover td{background:#eef6ff;cursor:pointer;}'                          TO ct_html.
-  APPEND '.cf-table .amt{text-align:right;font-family:"JetBrains Mono","Courier New",monospace;font-weight:500;}' TO ct_html.
-  APPEND '.cf-badge{display:inline-block;padding:3px 10px;border-radius:10px;'               TO ct_html.
-  APPEND 'font-size:10px;font-weight:700;}'                                                   TO ct_html.
-  APPEND '.cf-badge-06{background:#ffe0e0;color:#c00000;border:1px solid rgba(192,0,0,0.2);}' TO ct_html.
-  APPEND '.cf-badge-05{background:#e0f5e8;color:#006030;border:1px solid rgba(0,96,48,0.2);}' TO ct_html.
-  APPEND '.cf-no-data{text-align:center;padding:40px;color:#8aacca;font-size:13px;'           TO ct_html.
-  APPEND 'font-style:italic;}'                                                                 TO ct_html.
-
-  " ── CASHFLOW CALC TABLE ──
-  APPEND '.cf-calc-table{width:100%;border-collapse:collapse;margin-top:6px;}' TO ct_html.
-  APPEND '.cf-calc-table th{background:linear-gradient(90deg,#0a1f3c,#0d2d4f);color:#fff;font-size:11px;' TO ct_html.
-  APPEND 'padding:10px 10px;text-align:left;border-bottom:2px solid #1e6bb8;letter-spacing:0.5px;}' TO ct_html.
-  APPEND '.cf-calc-table td{font-size:11px;padding:8px 10px;border-bottom:1px solid #e8f0fa;font-weight:500;}' TO ct_html.
-  APPEND '.cf-calc-table tr:nth-child(even) td{background:#f5f9ff;}' TO ct_html.
-  APPEND '.cf-calc-table tr:hover td{background:#eef6ff;}' TO ct_html.
-  APPEND '.cf-calc-table .amt{text-align:right;font-family:"JetBrains Mono","Courier New",monospace;}' TO ct_html.
-  APPEND '.cf-calc-table .curr{text-align:center;font-weight:700;color:#0d2d4f;}' TO ct_html.
-
-  APPEND '.cf-layout{width:100%;overflow:hidden;}' TO ct_html.
-  APPEND '.cf-left{overflow-x:auto;}' TO ct_html.
-  APPEND '.cf-table{min-width:900px;}' TO ct_html.
-
-  " ── HIDE/UNHIDE LOGIC — UNCHANGED ──
-  APPEND '.cf-layout{display:flex;gap:16px;}' TO ct_html.
-  APPEND '.cf-left{flex:1;transition:all .3s;}' TO ct_html.
-  APPEND '.cf-right{width:45%;display:none;}' TO ct_html.
-  APPEND '.cf-right.active{display:block;}' TO ct_html.
-  APPEND '.cf-left.shrink{width:55%;flex:none;}' TO ct_html.
-  APPEND '.cf-close{margin:10px;}' TO ct_html.
-
-  APPEND '</style>'                                                                            TO ct_html.
-  APPEND '</head>'   
-
-  SELECT
-   a~ranl        AS zsecurity_number,
-   a~xalkz       AS zshort_text,
-   a~xallb       AS zlong_text,
-   a~gsart       AS zproduct_type,
-   a~repke       AS zissuer,
-   a~repke       AS zissuer_text,
-   a~rewhr       AS zissue_currency,
-   a~bempreis    AS znominal_value,
-   b~sanlf       AS zproduct_category,
-   c~ltx         AS zproduct_type_text,
-   d~vvranlwx    AS zisin,
-   f~debeg       AS zissue_start,
-   f~bnoms       AS zissue_price,
-   f~dendf       AS zfinal_due_date,
-   g~zl1         AS zli_classification,
-   g~zl1         AS zli_class_desc,
-   h~kontrh      AS zkontrh,
-   h~bukrs       AS zbukrs,
-   h~rfha        AS zrfha,
-   h~sfhaart     AS zsfhaart,
-   i~name_org1   AS zkontrh_name,
-   j~xtext       AS zsfhaart_text,
-   k~dbestand    AS zposition_value_date,
-   k~dvalut      AS zcalculation_date,
-   k~dzterm      AS zpayment_date,
-   k~astueck     AS zno_units,
-   k~buprc       AS zprice,
-   k~wbbetr      AS ztxn_curr,
-   k~bebetr      AS zmarket_value,
-   k~bbbetr      AS zpayment_amt,
-   m~zletter_check      AS zletter_check,
-   m~znse_slip_check      AS znse_slip_check,
-   m~zchecker      AS zchecker
- INTO TABLE @DATA(lt_data)
-  FROM vwpanla AS a
-   LEFT OUTER JOIN tzaf AS b
-         ON a~sanlf = b~sanlf
-   LEFT OUTER JOIN tzpat AS c
-         ON  c~spras = 'E'
-         AND c~gsart = a~gsart
-   LEFT OUTER JOIN twx2 AS d
-         ON d~ranl = a~ranl
-         AND d~vvranlwi = '01'
-   LEFT OUTER JOIN but000 AS e
-         ON e~partner = a~repke
-   LEFT OUTER JOIN vwpanle AS f
-         ON a~ranl = f~ranl
-   LEFT OUTER JOIN ztrm_t0002 AS g
-        ON g~zsgsart = a~gsart
-   INNER JOIN vtbfha AS h
-        ON h~ranl = a~ranl
-   LEFT OUTER JOIN but000 AS i
-         ON i~partner = h~kontrh
-   LEFT OUTER JOIN at10t AS j
-         ON j~sgsart = a~gsart
-         AND j~sfhaart = h~sfhaart
-         AND j~spras = 'E'
-   INNER JOIN /fspl/vista_t001 AS v   "<<< replace range logic
-         ON v~zrfha = h~rfha
-        AND v~zclass_id = a~ranl
-       " AND v~zissue_type = @<fs_sum1>-zissue_type
-   LEFT OUTER JOIN /fspl/trm_t003 AS m
-         ON m~zbukrs = h~bukrs
-         AND m~zranl = h~ranl
-         AND m~zrfha = h~rfha
-   LEFT OUTER JOIN vtbfhapo AS k
-         ON k~bukrs = h~bukrs
-         AND k~rfha = h~rfha
-         AND k~rfhazu = h~rfhazul
-         AND k~sfhazba IN ( '0120' )
-  WHERE a~gsart = '15D'
-  AND a~rewhr = 'USD'
-  AND h~bukrs = '1000'.
-
-  APPEND '</head>' TO lt_html.   " safety — already closed in Part 1, keep only if needed
-  APPEND '<script>' TO lt_html.
-
-  " ── TAB SWITCHER — now handles 3 panels ──
-  APPEND 'function switchTab(id){' TO lt_html.
-  APPEND 'document.getElementById("panel1").className="panel";' TO lt_html.
-  APPEND 'document.getElementById("panel2").className="panel";' TO lt_html.
-  APPEND 'document.getElementById("panel3").className="panel";' TO lt_html.
-  APPEND 'document.getElementById(id).className="panel active";' TO lt_html.
-  APPEND 'var navs=document.getElementsByClassName("nav-link");' TO lt_html.
-  APPEND 'for(var i=0;i<navs.length;i++){navs[i].className="btn nav-link";}' TO lt_html.
-  APPEND 'document.getElementById("nav-"+id).className="btn nav-link active-nav";' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function gv(id){var e=document.getElementById(id);return e?e.value:"";}' TO lt_html.
-
-  APPEND 'function collectBond(){' TO lt_html.
-  APPEND ' return gv("facevalue")+"|"+' TO lt_html.
-  APPEND '        gv("issuer")+"|"+' TO lt_html.
-  APPEND '        gv("couponrate")+"|"+' TO lt_html.
-  APPEND '        gv("issuetype")+"|"+' TO lt_html.
-  APPEND '        gv("couponfreq")+"|"+' TO lt_html.
-  APPEND '        gv("longname")+"|"+' TO lt_html.
-  APPEND '        gv("calcmethod")+"|"+' TO lt_html.
-  APPEND '        gv("isin")+"|"+' TO lt_html.
-  APPEND '        gv("nextduedate")+"|"+' TO lt_html.
-  APPEND '        gv("issuancedate")+"|"+' TO lt_html.
-  APPEND '        gv("maturitydate")+"|"+' TO lt_html.
-  APPEND '        gv("issuecurr");' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function collectTxn(){' TO lt_html.
-  APPEND ' return gv("classid_txn")+"|"+' TO lt_html.
-  APPEND '        gv("nounits")+"|"+' TO lt_html.
-  APPEND '        gv("issueprice")+"|"+' TO lt_html.
-  APPEND '        gv("issueplacement");' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function doCreateBond(){' TO lt_html.
-  APPEND ' document.location="sapevent:CREATE_BOND="+encodeURIComponent(collectBond());' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function doCreateIssuance(){' TO lt_html.
-  APPEND ' document.location="sapevent:CREATE_ISSUANCE="+encodeURIComponent(collectTxn());' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function doFees(){' TO lt_html.
-  APPEND ' document.location="sapevent:FEES="+encodeURIComponent(collectTxn());' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function genClassId(){' TO lt_html.
-  APPEND 'var t=(new Date()).getTime().toString(36).toUpperCase();' TO lt_html.
-  APPEND 'var r=Math.floor(Math.random()*65535).toString(16).toUpperCase();' TO lt_html.
-  APPEND 'return "CLS-"+t+"-"+r;' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  "function for cashflow
-  APPEND 'function showCF(req){' TO lt_html.
-  APPEND 'document.getElementById("cf-left").classList.add("shrink");' TO lt_html.
-  APPEND 'document.getElementById("cf-right").classList.add("active");' TO lt_html.
-  APPEND 'document.location="sapevent:SHOW_CF="+encodeURIComponent(req);' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  "Hide function
-  APPEND 'function hideCF(){' TO lt_html.
-  APPEND 'document.getElementById("cf-left").classList.remove("shrink");' TO lt_html.
-  APPEND 'document.getElementById("cf-right").classList.remove("active");' TO lt_html.
-  APPEND 'document.location="sapevent:HIDE_CF";' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND 'function init(){' TO lt_html.
-  " APPEND 'var cid=genClassId();' TO lt_html.
-  APPEND 'document.getElementById("classid_txn").value=cid;' TO lt_html.
-  APPEND 'document.getElementById("cid-strip").innerHTML=cid;' TO lt_html.
-  APPEND 'document.getElementById("cid-chip").innerHTML=cid;' TO lt_html.
-  APPEND '}' TO lt_html.
-
-  APPEND '</script>' TO lt_html.
-
-  APPEND '<body onload="init()">' TO lt_html.
-
-  " ── HEADER ──
-  APPEND '<div class="hdr">' TO lt_html.
-  APPEND '<span class="hdr-title">&#9670; Bond Creation </span>' TO lt_html.
-  APPEND '<span class="hdr-badges">' TO lt_html.
-  APPEND '<span class="badge">NEW ENTRY</span>' TO lt_html.
-  APPEND '<span class="badge">TY_BLTR</span>' TO lt_html.
-  APPEND '</span>' TO lt_html.
-  APPEND '<div style="clear:both"></div>' TO lt_html.
-  APPEND '</div>' TO lt_html.
-
-  " ── CLASS ID BAR ──
-  APPEND |<div class="classid-bar">CLASS ID: <span id="cid-strip">{ gv_classid }</span></div>| TO lt_html.
-  "APPEND '<div class="classid-bar">CLASS ID: <span id="cid-strip"> </span></div>' TO lt_html.
-
-  " ── SIDEBAR ──
-  APPEND '<div class="sidebar">' TO lt_html.
-  APPEND '<div class="nav-label">Navigation</div>' TO lt_html.
-  APPEND '<div class="btn nav-link active-nav" id="nav-panel1" onclick="switchTab(''panel1'')"><span class="btn-icon">&#128196;</span> Bond Class</div>' TO lt_html.
-  APPEND '<div class="btn nav-link" id="nav-panel2" onclick="switchTab(''panel2'')"><span class="btn-icon">&#128202;</span> Transaction</div>' TO lt_html.
-  APPEND '<div class="btn nav-link" id="nav-panel3" onclick="switchTab(''panel3'')"><span class="btn-icon">&#128178;</span> Cash Flow</div>' TO lt_html.
-  APPEND '<div class="nav-divider"></div>' TO lt_html.
-  APPEND '<div class="classid-chip">' TO lt_html.
-  APPEND '<span class="chip-label">Class ID</span>' TO lt_html.
-  APPEND |<span class="chip-val" id="cid-chip">{ gv_classid }</span>| TO lt_html.
- " APPEND '<span class="chip-val" id="cid-chip">&#8212;</span>' TO lt_html.
-  APPEND '</div>' TO lt_html.
-  APPEND '</div>' TO lt_html.
-
-  " ── CONTENT ──
-  APPEND '<div class="content">' TO lt_html.
-
-  " ════════════════════════════════
-  " PANEL 1 — BOND CLASS
-  " ════════════════════════════════
-IF gv_active_tab = 'panel1'.
-  APPEND '<div id="panel1" class="panel active">' TO lt_html.
-ELSE.
-  APPEND '<div id="panel1" class="panel">' TO lt_html.
-ENDIF.
-
-  APPEND '<div class="card">' TO lt_html.
-  APPEND '<div class="card-hdr"><span class="card-hdr-bar"></span>' TO lt_html.
-  APPEND '<span class="card-hdr-title">Identification</span></div>' TO lt_html.
-  APPEND '<div class="card-body">' TO lt_html.
-  APPEND '<table class="ftable" cellpadding="0" cellspacing="0">' TO lt_html.
-
-  APPEND '<tr>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Issuer</span>' TO lt_html.
-  APPEND '<input id="issuer" type="text" placeholder="Issuer name" /></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Issue Type</span>' TO lt_html.
-  APPEND '<select id="issuetype"><option value=""></option>' TO lt_html.
-  APPEND '<option value="144A">144A</option>' TO lt_html.
-  APPEND '<option value="REGS">Reg S</option>' TO lt_html.
-  APPEND '<option value="CORP">Corporate</option>' TO lt_html.
-  APPEND '<option value="GOVT">Government</option>' TO lt_html.
-  APPEND '</select></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">ISIN</span>' TO lt_html.
-  APPEND '<input id="isin" type="text" placeholder="e.g. US0231351067" /></td>' TO lt_html.
-  APPEND '<td class="w25"></td>' TO lt_html.
-  APPEND '</tr>' TO lt_html.
-
-  APPEND '<tr>' TO lt_html.
-  APPEND '<td class="w50" colspan="2"><span class="flabel">Long Name</span>' TO lt_html.
-  APPEND '<input id="longname" type="text" placeholder="Full bond description" /></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Issuance Date</span>' TO lt_html.
-  APPEND '<input id="issuancedate" type="text" placeholder="YYYY-MM-DD" /></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Maturity Date</span>' TO lt_html.
-  APPEND '<input id="maturitydate" type="text" placeholder="YYYY-MM-DD" /></td>' TO lt_html.
-  APPEND '</tr>' TO lt_html.
-
-  APPEND '</table></div></div>' TO lt_html.
-
-  APPEND '<div class="card">' TO lt_html.
-  APPEND '<div class="card-hdr"><span class="card-hdr-bar"></span>' TO lt_html.
-  APPEND '<span class="card-hdr-title">Coupon &amp; Financial Terms</span></div>' TO lt_html.
-  APPEND '<div class="card-body">' TO lt_html.
-  APPEND '<table class="ftable" cellpadding="0" cellspacing="0">' TO lt_html.
-
-  APPEND '<tr>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Face Value</span>' TO lt_html.
-  APPEND '<input id="facevalue" type="text" placeholder="0.00" /></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Issue Currency</span>' TO lt_html.
-  APPEND '<select id="issuecurr"><option value=""></option>' TO lt_html.
-  APPEND '<option value="USD">USD</option><option value="EUR">EUR</option>' TO lt_html.
-  APPEND '<option value="INR">INR</option><option value="GBP">GBP</option>' TO lt_html.
-  APPEND '</select></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Coupon Rate (%)</span>' TO lt_html.
-  APPEND '<input id="couponrate" type="text" placeholder="0.000" /></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Coupon Frequency</span>' TO lt_html.
-  APPEND '<select id="couponfreq"><option value=""></option>' TO lt_html.
-  APPEND '<option value="M">Monthly</option><option value="Q">Quarterly</option>' TO lt_html.
-  APPEND '<option value="SA">Semi-Annual</option><option value="A">Annual</option>' TO lt_html.
-  APPEND '</select></td>' TO lt_html.
-  APPEND '</tr>' TO lt_html.
-
-  APPEND '<tr>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Int Calc Method</span>' TO lt_html.
-  APPEND '<select id="calcmethod"><option value=""></option>' TO lt_html.
-  APPEND '<option value="ACT360">ACT/360</option>' TO lt_html.
-  APPEND '<option value="ACT365">ACT/365</option>' TO lt_html.
-  APPEND '<option value="30360">30/360</option>' TO lt_html.
-  APPEND '</select></td>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Next Due Date</span>' TO lt_html.
-  APPEND '<input id="nextduedate" type="text" placeholder="YYYY-MM-DD" /></td>' TO lt_html.
-  APPEND '<td class="w25"></td><td class="w25"></td>' TO lt_html.
-  APPEND '</tr>' TO lt_html.
-
-  APPEND '</table></div>' TO lt_html.
-  APPEND '<div class="card-footer">' TO lt_html.
-  APPEND '<button class="btn-outline" onclick="switchTab(''panel2'')">Transaction &rarr;</button>' TO lt_html.
-  APPEND '<button class="btn-blue" onclick="doCreateBond()">&#9654; Create Bond</button>' TO lt_html.
-  APPEND '</div></div>' TO lt_html.
-
-  APPEND '</div>' TO lt_html.  " END PANEL 1
-
-  " ════════════════════════════════
-  " PANEL 2 — TRANSACTION
-  " ════════════════════════════════
-IF gv_active_tab = 'panel2'.
-  APPEND '<div id="panel2" class="panel active">' TO lt_html.
-ELSE.
-  APPEND '<div id="panel2" class="panel">' TO lt_html.
-ENDIF.
-
-  APPEND '<div class="card">' TO lt_html.
-  APPEND '<div class="card-hdr"><span class="card-hdr-bar"></span>' TO lt_html.
-  APPEND '<span class="card-hdr-title">Bond Transaction Details</span></div>' TO lt_html.
-  APPEND '<div class="card-body">' TO lt_html.
-  APPEND '<table class="ftable" cellpadding="0" cellspacing="0">' TO lt_html.
-
-  APPEND '<tr>' TO lt_html.
-  APPEND '<td class="w25"><span class="flabel">Class ID <span class="hint">auto</span></span>' TO lt_html.
-  APPEND '<div class="inp-wrap"><input id="classid_txn" class="classid-fld "  />' TO lt_html.
-  APPEND '<span class="inp-icon">&#128269;</span></div></td>' TO lt_html.
-  APPEND '<td class="w33"><span class="flabel">No. of Units</span>' TO lt_html.
-  APPEND '<input id="nounits" type="text" placeholder="0" /></td>' TO lt_html.
-  APPEND '<td class="w33"></td>' TO lt_html.
-  APPEND '</tr>' TO lt_html.
-
-  APPEND '<tr>' TO lt_html.
-  APPEND '<td class="w33"><span class="flabel">Issue Price</span>' TO lt_html.
-  APPEND '<input id="issueprice" type="text" placeholder="0.00" /></td>' TO lt_html.
-  APPEND '<td class="w33"><span class="flabel">Issue Placement</span>' TO lt_html.
-  APPEND '<input id="issueplacement" type="text" value="0.00" /></td>' TO lt_html.
-  APPEND '<td class="w33"></td>' TO lt_html.
-  APPEND '</tr>' TO lt_html.
-
-  APPEND '</table></div>' TO lt_html.
-  APPEND '<div class="card-footer">' TO lt_html.
-  APPEND '<button class="btn-outline" onclick="switchTab(''panel1'')">&larr; Bond Class</button>' TO lt_html.
-  APPEND '<button class="btn-outline" onclick="doFees()">&#9670; Fees</button>' TO lt_html.
-  APPEND '<button class="btn-blue" onclick="doCreateIssuance()">&#9654; Create Issuance</button>' TO lt_html.
-  APPEND '</div></div>' TO lt_html.
-
-  APPEND '</div>' TO lt_html.  " END PANEL 2
-
-  " ════════════════════════════════
-  " PANEL 3 — CASH FLOW
-  " ════════════════════════════════
-IF gv_active_tab = 'panel3'.
-  APPEND '<div id="panel3" class="panel active">' TO lt_html.
-ELSE.
-  APPEND '<div id="panel3" class="panel">' TO lt_html.
-ENDIF.
-
-  APPEND '<div class="card">' TO lt_html.
-  APPEND '<div class="card-hdr"><span class="card-hdr-bar"></span>' TO lt_html.
-  APPEND '<span class="card-hdr-title">Cash Flow Transactions</span></div>' TO lt_html.
-  APPEND '<div class="card-body">' TO lt_html.
-  APPEND '<div class="cf-layout">' TO lt_html.
-
-IF gv_cf_open = abap_true.
-  APPEND '<div class="cf-left shrink" id="cf-left">' TO lt_html.
-ELSE.
-  APPEND '<div class="cf-left" id="cf-left">' TO lt_html.
-ENDIF.
-  APPEND '<div style="overflow-x:auto;width:100%;">' TO lt_html.
-  APPEND '<table class="cf-table">' TO lt_html.
-  APPEND '<div style="overflow-x:auto;">' TO lt_html.
-  APPEND '<table class="cf-table">' TO lt_html.
-  APPEND '<thead><tr>' TO lt_html.
-  APPEND '<th>Transaction</th>' TO lt_html.
-  APPEND '<th>Start Date</th>' TO lt_html.
-  APPEND '<th>End Date</th>' TO lt_html.
-  APPEND '<th style="text-align:right;">BG Amount</th>' TO lt_html.
-  APPEND '<th>BG Curr</th>' TO lt_html.
-  APPEND '<th>Beneficiary</th>' TO lt_html.
-  APPEND '</tr></thead>' TO lt_html.
-  APPEND '<tbody>' TO lt_html.
-
-  DATA: lv_row TYPE string.
-  DATA: lv_amt TYPE string.
-
-  LOOP AT lt_data INTO DATA(ls_data).
-
-    lv_amt = ls_data-zissue_price.
-
-    CONCATENATE '<tr onclick="showCF('''
-               ls_data-zrfha
-               '|'
-               ls_data-zsecurity_number
-               ''')">'
-         '<td>' ls_data-zrfha '</td>'
-         '<td>' ls_data-zissue_start '</td>'
-         '<td>' ls_data-zfinal_due_date '</td>'
-         '<td>' lv_amt '</td>'
-         '<td>' ls_data-zissue_currency '</td>'
-         '<td>' ls_data-zissuer '</td>'
-         '</tr>'
-   INTO lv_row.
-
-    APPEND lv_row TO lt_html.
-
-  ENDLOOP.
-
-  APPEND '</tbody></table></div></div>' TO lt_html.
-
-IF gv_cf_open = abap_true.
-  APPEND '<div class="cf-right active" id="cf-right">' TO lt_html.
-ELSE.
-  APPEND '<div class="cf-right" id="cf-right">' TO lt_html.
-ENDIF.
-  APPEND '<div class="card">' TO lt_html.
-  APPEND '<div class="card-hdr"><span class="card-hdr-bar"></span>' TO lt_html.
-  APPEND '<span class="card-hdr-title">Calculated Cashflow</span></div>' TO lt_html.
-
-  APPEND '<div class="card-body" id="cf-data">' TO lt_html.
-  APPEND '<table class="cf-calc-table">' TO lt_html.
-
-  APPEND '<thead><tr>' TO lt_html.
-  APPEND '<th>Due Date</th>' TO lt_html.
-  APPEND '<th>Description</th>' TO lt_html.
-  APPEND '<th>Units</th>' TO lt_html.
-  APPEND '<th class="amt">Amount</th>' TO lt_html.
-  APPEND '<th>Curr</th>' TO lt_html.
-  APPEND '<th>No Days</th>' TO lt_html.
-  APPEND '<th>Coupon</th>' TO lt_html.
-  APPEND '<th class="amt">Base Amt</th>' TO lt_html.
-  APPEND '</tr></thead>' TO lt_html.
-  DATA(lv_time) = sy-uzeit.
-
-  APPEND '<tbody>' TO lt_html.
-
-  DATA: lv_row1  TYPE string,
-        lv_amt1  TYPE string,
-        lv_atage TYPE string,
-        lv_vamt  TYPE string.
-
-  LOOP AT gt_tpm13 INTO gs_tpm13.
-
-    lv_amt1 = gs_tpm13-position_amt.
-    lv_atage = gs_tpm13-atage.
-    lv_vamt = gs_tpm13-valuation_amt.
-
-    CONCATENATE
-    '<tr>'
-    '<td>' gs_tpm13-calc_end '</td>'
-    '<td>' gs_tpm13-accounting_code_t '</td>'
-    '<td>' lv_atage  '</td>'
-    '<td class="amt">' lv_amt1 '</td>'
-    '<td>' gs_tpm13-position_curr '</td>'
-    '<td>' lv_atage '</td>'
-    '<td>' gs_tpm13-coupon_sign '</td>'
-    '<td class="amt">' lv_vamt '</td>'
-    '</tr>'
-    INTO lv_row1.
-
-    APPEND lv_row1 TO lt_html.
-
-  ENDLOOP.
-
-  APPEND '</tbody></table>' TO lt_html.
-  APPEND '</div>' TO lt_html.
-
-  APPEND '<div class="card-footer">' TO lt_html.
-  APPEND '<button class="btn-outline" onclick="hideCF()">Cancel Cashflow</button>' TO lt_html.
-  APPEND '</div>' TO lt_html.
-
-  APPEND '</div>' TO lt_html.
-  APPEND '</div>' TO lt_html.
-
-  APPEND '</div>' TO lt_html.  "right ends
-
-  APPEND '</div>' TO lt_html.  " end card
-  APPEND '</div>' TO lt_html.  " end panel3
-
-  APPEND '</div>' TO lt_html.  " end .content
-  APPEND '</body>' TO lt_html.
-  APPEND '</html>' TO lt_html.
-                                                                          TO ct_html.
+"<html>
+<head>
+<link href=""https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"" rel=""stylesheet"">
+<style>
+body{font-family:Inter,Arial,sans-serif;background:#eef2f7;color:#0d1b2a;margin:0;padding:0;}
+*{box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+.content{margin-left:200px;padding:18px;height:calc(100vh - 90px);overflow:scroll;}
+.hdr{background:linear-gradient(90deg,#0a1f3c 0%,#0d2d4f 60%,#0f3460 100%);padding:14px 20px;border-bottom:3px solid #1e6bb8;display:flex;align-items:center;}
+.hdr-title{font-size:20px;font-weight:800;color:#ffffff;letter-spacing:-0.3px;display:inline;}
+.hdr-badges{margin-left:auto;}
+.badge{font-size:10px;font-weight:700;background:rgba(30,107,184,0.25);color:#7ec8ff;
+border:1px solid rgba(30,107,184,0.5);padding:5px 14px;border-radius:20px;margin-left:8px;letter-spacing:0.5px;}
+.classid-bar{background:#071d30;padding:6px 20px;font-size:11px;
+color:#5a8fbf;border-bottom:1px solid #1a3a5c;}
+.classid-bar span{font-family:""JetBrains Mono"",""Courier New"",monospace;color:#f0c040;
+font-weight:600;margin-left:8px;}
+.sidebar{width:200px;float:left;background:linear-gradient(180deg,#0a1f3c 0%,#0d2d4f 100%);min-height:800px;
+padding:16px 10px;border-right:2px solid #1a3a5c;}
+.nav-label{font-size:9px;font-weight:700;letter-spacing:2.5px;
+text-transform:uppercase;color:#2a5a7a;padding:8px 10px 6px 10px;}
+.btn{display:block;margin:3px 0;padding:11px 12px;background:transparent;
+color:#6a9ac4;text-decoration:none;cursor:pointer;border-left:3px solid
+transparent;border-radius:6px;font-size:12px;font-weight:600;
+transition:all 0.15s ease;}
+.btn:hover{background:rgba(30,107,184,0.12);color:#c8e4ff;border-left-color:#2a6aaa;}
+.btn.active-nav{background:rgba(30,107,184,0.2);color:#ffffff;border-left-color:#3a9ef5;
+box-shadow:inset 0 0 12px rgba(30,107,184,0.1);}
+.btn-icon{margin-right:8px;}
+.nav-divider{height:1px;background:rgba(30,107,184,0.2);margin:12px 6px;}
+.classid-chip{background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.2);
+border-radius:8px;padding:10px 12px;margin-top:14px;}
+.chip-label{font-size:8px;font-weight:700;letter-spacing:2px;
+text-transform:uppercase;color:rgba(240,192,64,0.4);display:block;margin-bottom:5px;}
+.chip-val{font-family:""JetBrains Mono"",""Courier New"",monospace;font-size:11px;font-weight:600;
+color:#f0c040;word-break:break-all;}
+.content{margin-left:200px;padding:18px;}
+.panel{display:none;}
+.active{display:block;}
+.card{background:#ffffff;border:1px solid #dce8f5;border-radius:10px;
+margin-bottom:16px;overflow:hidden;
+box-shadow:0 2px 8px rgba(13,45,79,0.08),0 1px 2px rgba(13,45,79,0.04);}
+.card-hdr{background:linear-gradient(90deg,#f0f6ff 0%,#f8fbff 100%);
+border-bottom:2px solid #dce8f5;padding:13px 18px;display:flex;align-items:center;gap:10px;}
+.card-hdr-title{font-size:12px;font-weight:700;letter-spacing:1px;
+text-transform:uppercase;color:#0d2d4f;}
+.card-hdr-bar{display:inline-block;width:3px;height:16px;
+background:linear-gradient(180deg,#1e6bb8,#3a9ef5);
+border-radius:2px;flex-shrink:0;}
+.card-body{padding:18px 18px 10px 18px;}
+.card-footer{background:#f4f8fd;border-top:1px solid #dce8f5;
+padding:12px 18px;text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:8px;}
+.sec{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+color:#1e6bb8;padding:10px 18px 6px 18px;border-bottom:1px solid #dce8f5;}
+.flabel{font-size:11px;font-weight:600;color:#1a3050;display:block;margin-bottom:5px;letter-spacing:0.1px;}
+.req{color:#e02020;font-size:13px;}
+.hint{color:#8aacca;font-size:9px;font-weight:normal;
+font-family:""JetBrains Mono"",""Courier New"",monospace;margin-left:4px;}
+input,select{width:100%;height:34px;padding:0 10px;background:#ffffff;
+border:1.5px solid #c8d8ea;border-radius:6px;font-size:12px;
+font-family:Inter,Arial,sans-serif;color:#0d1b2a;font-weight:500;
+transition:border-color 0.15s,box-shadow 0.15s;}
+input:hover,select:hover{border-color:#a0b8d0;}
+input:focus,select:focus{border-color:#1e6bb8;outline:none;
+box-shadow:0 0 0 3px rgba(30,107,184,0.12);}
+input::placeholder{color:#a0b8cc;font-weight:400;}
+input.readonly-fld{background:#eef2f6;color:#6a8aaa;
+border-style:dashed;cursor:not-allowed;}
+input.classid-fld{background:#fffbea;border:1.5px dashed rgba(200,150,0,0.4);
+color:#7a5a00;font-family:""JetBrains Mono"",""Courier New"",monospace;font-size:11px;font-weight:600;}
+.ftable{width:100%;border-collapse:collapse;}
+.ftable td{padding:0 12px 12px 0;vertical-align:top;}
+.ftable td:last-child{padding-right:0;}
+.w25{width:25%;}
+.w33{width:33%;}
+.w50{width:50%;}
+.inp-wrap{position:relative;}
+.inp-wrap input{padding-right:32px;}
+.inp-icon{position:absolute;right:0;top:0;width:34px;height:34px;
+background:#e8f0fa;border:1.5px solid #c8d8ea;border-left:none;
+border-radius:0 6px 6px 0;cursor:pointer;font-size:13px;color:#3a6898;
+text-align:center;line-height:34px;transition:background 0.15s;}
+.inp-icon:hover{background:#d0e4f8;color:#0d2d4f;}
+.btn-blue{background:linear-gradient(135deg,#1e6bb8,#2478d4);color:#ffffff;border:none;border-radius:6px;
+padding:0 20px;font-size:11px;font-weight:700;letter-spacing:0.8px;
+text-transform:uppercase;cursor:pointer;font-family:Inter,Arial,sans-serif;height:34px;
+box-shadow:0 2px 8px rgba(30,107,184,0.35);transition:all 0.15s;}
+.btn-blue:hover{background:linear-gradient(135deg,#1a5fa0,#1e6bb8);
+box-shadow:0 4px 14px rgba(30,107,184,0.45);transform:translateY(-1px);}
+.btn-blue:active{transform:translateY(0);}
+.btn-outline{background:#ffffff;color:#1e6bb8;border:1.5px solid #1e6bb8;
+border-radius:6px;padding:0 16px;font-size:11px;font-weight:700;
+letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;
+font-family:Inter,Arial,sans-serif;height:34px;margin-right:0;transition:all 0.15s;}
+.btn-outline:hover{background:#e8f0f8;border-color:#1558a0;}
+.cf-table{width:100%;border-collapse:collapse;margin-top:4px;}
+.cf-table th{background:linear-gradient(90deg,#0a1f3c,#0d2d4f);color:#ffffff;font-size:11px;font-weight:700;
+padding:11px 12px;text-align:left;border-bottom:2px solid #1e6bb8;
+white-space:nowrap;letter-spacing:0.5px;}
+.cf-table td{background:#ffffff;color:#0d1b2a;font-size:12px;font-weight:500;
+padding:10px 12px;border-bottom:1px solid #e8f0fa;white-space:nowrap;
+transition:background 0.1s;}
+.cf-table tr:hover td{background:#eef6ff;cursor:pointer;}
+.cf-table .amt{text-align:right;font-family:""JetBrains Mono"",""Courier New"",monospace;font-weight:500;}
+.cf-badge{display:inline-block;padding:3px 10px;border-radius:10px;
+font-size:10px;font-weight:700;}
+.cf-badge-06{background:#ffe0e0;color:#c00000;border:1px solid rgba(192,0,0,0.2);}
+.cf-badge-05{background:#e0f5e8;color:#006030;border:1px solid rgba(0,96,48,0.2);}
+.cf-no-data{text-align:center;padding:40px;color:#8aacca;font-size:13px;
+font-style:italic;}
+.cf-calc-table{width:100%;border-collapse:collapse;margin-top:6px;}
+.cf-calc-table th{background:linear-gradient(90deg,#0a1f3c,#0d2d4f);color:#fff;font-size:11px;
+padding:10px 10px;text-align:left;border-bottom:2px solid #1e6bb8;letter-spacing:0.5px;}
+.cf-calc-table td{font-size:11px;padding:8px 10px;border-bottom:1px solid #e8f0fa;font-weight:500;}
+.cf-calc-table tr:nth-child(even) td{background:#f5f9ff;}
+.cf-calc-table tr:hover td{background:#eef6ff;}
+.cf-calc-table .amt{text-align:right;font-family:""JetBrains Mono"",""Courier New"",monospace;}
+.cf-calc-table .curr{text-align:center;font-weight:700;color:#0d2d4f;}
+.cf-layout{width:100%;overflow:hidden;}
+.cf-left{overflow-x:auto;}
+.cf-table{min-width:900px;}
+.cf-layout{display:flex;gap:16px;}
+.cf-left{flex:1;transition:all .3s;}
+.cf-right{width:45%;display:none;}
+.cf-right.active{display:block;}
+.cf-left.shrink{width:55%;flex:none;}
+.cf-close{margin:10px;}
+</style>
+</head>
+</head>
+<script>
+function switchTab(id){
+document.getElementById(""panel1"").className=""panel"";
+document.getElementById(""panel2"").className=""panel"";
+document.getElementById(""panel3"").className=""panel"";
+document.getElementById(id).className=""panel active"";
+var navs=document.getElementsByClassName(""nav-link"");
+for(var i=0;i<navs.length;i++){navs[i].className=""btn nav-link"";}
+document.getElementById(""nav-""+id).className=""btn nav-link active-nav"";
+}
+function gv(id){var e=document.getElementById(id);return e?e.value:"""";}
+function collectBond(){
+ return gv(""facevalue"")+""|""+
+        gv(""issuer"")+""|""+
+        gv(""couponrate"")+""|""+
+        gv(""issuetype"")+""|""+
+        gv(""couponfreq"")+""|""+
+        gv(""longname"")+""|""+
+        gv(""calcmethod"")+""|""+
+        gv(""isin"")+""|""+
+        gv(""nextduedate"")+""|""+
+        gv(""issuancedate"")+""|""+
+        gv(""maturitydate"")+""|""+
+        gv(""issuecurr"");
+}
+function collectTxn(){
+ return gv(""classid_txn"")+""|""+
+        gv(""nounits"")+""|""+
+        gv(""issueprice"")+""|""+
+        gv(""issueplacement"");
+}
+function doCreateBond(){
+ document.location=""sapevent:CREATE_BOND=""+encodeURIComponent(collectBond());
+}
+function doCreateIssuance(){
+ document.location=""sapevent:CREATE_ISSUANCE=""+encodeURIComponent(collectTxn());
+}
+function doFees(){
+ document.location=""sapevent:FEES=""+encodeURIComponent(collectTxn());
+}
+function genClassId(){
+var t=(new Date()).getTime().toString(36).toUpperCase();
+var r=Math.floor(Math.random()*65535).toString(16).toUpperCase();
+return ""CLS-""+t+""-""+r;
+}
+function showCF(req){
+document.getElementById(""cf-left"").classList.add(""shrink"");
+document.getElementById(""cf-right"").classList.add(""active"");
+document.location=""sapevent:SHOW_CF=""+encodeURIComponent(req);
+}
+function hideCF(){
+document.getElementById(""cf-left"").classList.remove(""shrink"");
+document.getElementById(""cf-right"").classList.remove(""active"");
+document.location=""sapevent:HIDE_CF"";
+}
+function init(){
+document.getElementById(""classid_txn"").value=cid;
+document.getElementById(""cid-strip"").innerHTML=cid;
+document.getElementById(""cid-chip"").innerHTML=cid;
+}
+</script>
+<body onload=""init()"">
+<div class=""hdr"">
+<span class=""hdr-title"">&#9670; Bond Creation </span>
+<span class=""hdr-badges"">
+<span class=""badge"">NEW ENTRY</span>
+<span class=""badge"">TY_BLTR</span>
+</span>
+<div style=""clear:both""></div>
+</div>
+<div class=""classid-bar"">CLASS ID: <span id=""cid-strip""></span></div>
+<div class=""sidebar"">
+<div class=""nav-label"">Navigation</div>
+<div class=""btn nav-link active-nav"" id=""nav-panel1"" onclick=""switchTab('panel1')""><span class=""btn-icon"">&#128196;</span> Bond Class</div>
+<div class=""btn nav-link"" id=""nav-panel2"" onclick=""switchTab('panel2')""><span class=""btn-icon"">&#128202;</span> Transaction</div>
+<div class=""btn nav-link"" id=""nav-panel3"" onclick=""switchTab('panel3')""><span class=""btn-icon"">&#128178;</span> Cash Flow</div>
+<div class=""nav-divider""></div>
+<div class=""classid-chip"">
+<span class=""chip-label"">Class ID</span>
+<span class=""chip-val"" id=""cid-chip""></span>
+</div>
+</div>
+<div class=""content"">
+<div id=""panel1"" class=""panel active"">
+<div class=""card"">
+<div class=""card-hdr""><span class=""card-hdr-bar""></span>
+<span class=""card-hdr-title"">Identification</span></div>
+<div class=""card-body"">
+<table class=""ftable"" cellpadding=""0"" cellspacing=""0"">
+<tr>
+<td class=""w25""><span class=""flabel"">Issuer</span>
+<input id=""issuer"" type=""text"" placeholder=""Issuer name"" /></td>
+<td class=""w25""><span class=""flabel"">Issue Type</span>
+<select id=""issuetype""><option value=""""></option>
+<option value=""144A"">144A</option>
+<option value=""REGS"">Reg S</option>
+<option value=""CORP"">Corporate</option>
+<option value=""GOVT"">Government</option>
+</select></td>
+<td class=""w25""><span class=""flabel"">ISIN</span>
+<input id=""isin"" type=""text"" placeholder=""e.g. US0231351067"" /></td>
+<td class=""w25""></td>
+</tr>
+<tr>
+<td class=""w50"" colspan=""2""><span class=""flabel"">Long Name</span>
+<input id=""longname"" type=""text"" placeholder=""Full bond description"" /></td>
+<td class=""w25""><span class=""flabel"">Issuance Date</span>
+<input id=""issuancedate"" type=""text"" placeholder=""YYYY-MM-DD"" /></td>
+<td class=""w25""><span class=""flabel"">Maturity Date</span>
+<input id=""maturitydate"" type=""text"" placeholder=""YYYY-MM-DD"" /></td>
+</tr>
+</table></div></div>
+<div class=""card"">
+<div class=""card-hdr""><span class=""card-hdr-bar""></span>
+<span class=""card-hdr-title"">Coupon &amp; Financial Terms</span></div>
+<div class=""card-body"">
+<table class=""ftable"" cellpadding=""0"" cellspacing=""0"">
+<tr>
+<td class=""w25""><span class=""flabel"">Face Value</span>
+<input id=""facevalue"" type=""text"" placeholder=""0.00"" /></td>
+<td class=""w25""><span class=""flabel"">Issue Currency</span>
+<select id=""issuecurr""><option value=""""></option>
+<option value=""USD"">USD</option><option value=""EUR"">EUR</option>
+<option value=""INR"">INR</option><option value=""GBP"">GBP</option>
+</select></td>
+<td class=""w25""><span class=""flabel"">Coupon Rate (%)</span>
+<input id=""couponrate"" type=""text"" placeholder=""0.000"" /></td>
+<td class=""w25""><span class=""flabel"">Coupon Frequency</span>
+<select id=""couponfreq""><option value=""""></option>
+<option value=""M"">Monthly</option><option value=""Q"">Quarterly</option>
+<option value=""SA"">Semi-Annual</option><option value=""A"">Annual</option>
+</select></td>
+</tr>
+<tr>
+<td class=""w25""><span class=""flabel"">Int Calc Method</span>
+<select id=""calcmethod""><option value=""""></option>
+<option value=""ACT360"">ACT/360</option>
+<option value=""ACT365"">ACT/365</option>
+<option value=""30360"">30/360</option>
+</select></td>
+<td class=""w25""><span class=""flabel"">Next Due Date</span>
+<input id=""nextduedate"" type=""text"" placeholder=""YYYY-MM-DD"" /></td>
+<td class=""w25""></td><td class=""w25""></td>
+</tr>
+</table></div>
+<div class=""card-footer"">
+<button class=""btn-outline"" onclick=""switchTab('panel2')"">Transaction &rarr;</button>
+<button class=""btn-blue"" onclick=""doCreateBond()"">&#9654; Create Bond</button>
+</div></div>
+</div>
+<div id=""panel2"" class=""panel"">
+<div class=""card"">
+<div class=""card-hdr""><span class=""card-hdr-bar""></span>
+<span class=""card-hdr-title"">Bond Transaction Details</span></div>
+<div class=""card-body"">
+<table class=""ftable"" cellpadding=""0"" cellspacing=""0"">
+<tr>
+<td class=""w25""><span class=""flabel"">Class ID <span class=""hint"">auto</span></span>
+<div class=""inp-wrap""><input id=""classid_txn"" class=""classid-fld ""  />
+<span class=""inp-icon"">&#128269;</span></div></td>
+<td class=""w33""><span class=""flabel"">No. of Units</span>
+<input id=""nounits"" type=""text"" placeholder=""0"" /></td>
+<td class=""w33""></td>
+</tr>
+<tr>
+<td class=""w33""><span class=""flabel"">Issue Price</span>
+<input id=""issueprice"" type=""text"" placeholder=""0.00"" /></td>
+<td class=""w33""><span class=""flabel"">Issue Placement</span>
+<input id=""issueplacement"" type=""text"" value=""0.00"" /></td>
+<td class=""w33""></td>
+</tr>
+</table></div>
+<div class=""card-footer"">
+<button class=""btn-outline"" onclick=""switchTab('panel1')"">&larr; Bond Class</button>
+<button class=""btn-outline"" onclick=""doFees()"">&#9670; Fees</button>
+<button class=""btn-blue"" onclick=""doCreateIssuance()"">&#9654; Create Issuance</button>
+</div></div>
+</div>
+<div id=""panel3"" class=""panel"">
+<div class=""card"">
+<div class=""card-hdr""><span class=""card-hdr-bar""></span>
+<span class=""card-hdr-title"">Cash Flow Transactions</span></div>
+<div class=""card-body"">
+<div class=""cf-layout"">
+<div class=""cf-left"" id=""cf-left"">
+<div style=""overflow-x:auto;width:100%;"">
+<table class=""cf-table"">
+<div style=""overflow-x:auto;"">
+<table class=""cf-table"">
+<thead><tr>
+<th>Transaction</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th style=""text-align:right;"">BG Amount</th>
+<th>BG Curr</th>
+<th>Beneficiary</th>
+</tr></thead>
+<tbody>
+<tr onclick=""showCF('0000000250232|0000000150217')""><td>0000000250232</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250233|0000000150218')""><td>0000000250233</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250234|0000000150219')""><td>0000000250234</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250235|0000000150221')""><td>0000000250235</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250236|0000000150222')""><td>0000000250236</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250237|0000000150223')""><td>0000000250237</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250238|0000000150224')""><td>0000000250238</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250239|0000000150225')""><td>0000000250239</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250240|0000000150226')""><td>0000000250240</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250241|0000000150227')""><td>0000000250241</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250242|0000000150228')""><td>0000000250242</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250243|0000000150229')""><td>0000000250243</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250244|0000000150230')""><td>0000000250244</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250245|0000000150231')""><td>0000000250245</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250246|0000000150232')""><td>0000000250246</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250247|0000000150233')""><td>0000000250247</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250248|0000000150234')""><td>0000000250248</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250249|0000000150235')""><td>0000000250249</td><td>20240110</td><td>20270110</td><td>1000000.00 </td><td>USD</td><td>0006000035</td></tr>
+<tr onclick=""showCF('0000000250251|0000000150244')""><td>0000000250251</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250252|0000000150245')""><td>0000000250252</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250255|0000000150248')""><td>0000000250255</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250256|0000000150249')""><td>0000000250256</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250257|0000000150250')""><td>0000000250257</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250258|0000000150251')""><td>0000000250258</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250259|0000000150252')""><td>0000000250259</td><td>20240113</td><td>20270113</td><td>100.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250260|0000000150253')""><td>0000000250260</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250261|0000000150254')""><td>0000000250261</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250262|0000000150255')""><td>0000000250262</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250263|0000000150256')""><td>0000000250263</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250264|0000000150257')""><td>0000000250264</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250265|0000000150258')""><td>0000000250265</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250266|0000000150259')""><td>0000000250266</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250268|0000000150260')""><td>0000000250268</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250267|0000000150260')""><td>0000000250267</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250271|0000000150265')""><td>0000000250271</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250273|0000000150267')""><td>0000000250273</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250274|0000000150268')""><td>0000000250274</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250275|0000000150269')""><td>0000000250275</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250276|0000000150270')""><td>0000000250276</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250277|0000000150271')""><td>0000000250277</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250278|0000000150272')""><td>0000000250278</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250279|0000000150273')""><td>0000000250279</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250280|0000000150274')""><td>0000000250280</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250281|0000000150275')""><td>0000000250281</td><td>20240113</td><td>20270914</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+<tr onclick=""showCF('0000000250291|0000000150280')""><td>0000000250291</td><td>20240113</td><td>20270113</td><td>1000000.00 </td><td>USD</td><td>TFSIN</td></tr>
+</tbody></table></div></div>
+<div class=""cf-right"" id=""cf-right"">
+<div class=""card"">
+<div class=""card-hdr""><span class=""card-hdr-bar""></span>
+<span class=""card-hdr-title"">Calculated Cashflow</span></div>
+<div class=""card-body"" id=""cf-data"">
+<table class=""cf-calc-table"">
+<thead><tr>
+<th>Due Date</th>
+<th>Description</th>
+<th>Units</th>
+<th class=""amt"">Amount</th>
+<th>Curr</th>
+<th>No Days</th>
+<th>Coupon</th>
+<th class=""amt"">Base Amt</th>
+</tr></thead>
+<tbody>
+</tbody></table>
+</div>
+<div class=""card-footer"">
+<button class=""btn-outline"" onclick=""hideCF()"">Cancel Cashflow</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>"
